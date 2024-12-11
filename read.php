@@ -9,24 +9,33 @@
     
 
   <h1>affichage data</h1><hr>
-<table>
+<table border="1">
+  <tr>
+    <th>nom</th>
+    <th>prenom</th>
+    <th>email</th>
+    <th>telephone</th>
+  </tr>
    <?php
 
-    //   require 'connection.php';
+      require 'connection.php';
 
-    //   $requete = "SELECT * from member ";
-    //   $query = mysqli_query($conn, $requete);
+      $requete = "SELECT * from member ";
+      $query = mysqli_query($conn, $requete);
        
-    //   while($rows = mysqli_fetch_assoc($query)){
-          
-    //     echo"<tr>";
-    //     echo "<td> "$nom"</td>";
-    //     echo "<td>"$prenom" </td>";
-    //     echo "<td>"$email" </td>";
-    //     echo "<td>"$telephone"</td>";
-    //     echo"</tr>";
+      while($rows = mysqli_fetch_assoc($query)){
+        $id=$rows['id'];
+        echo "<tr>";
+        echo "<td>".$rows['nom']. "</td>";
+        echo "<td>".$rows['prenom']. "</td>";
+        echo "<td>".$rows['email']. "</td>";
+        echo "<td>".$rows['phone']. "</td>";
+        echo "<td><a href='update.php'> modification </a></td>";
+        echo "<td><a href='delete.php?id=".$id."'> supprimer </a></td>";
+        echo "</tr>";
+      
 
-    //   }
+      }
 
 ?>
 
