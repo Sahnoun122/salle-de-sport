@@ -15,8 +15,11 @@
      $sql = "DELETE FROM member where id= '$id' ";
      $query =mysqli_query($conn, $sql);
      if(isset($query)){
-     
-    }
+        echo "<h1> suppression avec success </h1>";
+        // header("location:read.php");
+    }else{
+        echo "<h1>erreur</h1>";
+        }
 
 ?>
 

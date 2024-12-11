@@ -32,6 +32,8 @@
    
    $query = mysqli_query($conn,$requete);
    echo"insere la requete";
+   header("location:index.html");
+
     }else{
         echo "<h1> non insere la requete </h1>";
     }
