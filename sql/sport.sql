@@ -7,6 +7,8 @@ SET time_zone = "+00:00";
 
 
 
+
+
 CREATE TABLE `activites` (
   `id_activite` int(11) NOT NULL,
   `nom_activite` varchar(100) DEFAULT NULL,
@@ -15,7 +17,9 @@ CREATE TABLE `activites` (
   `date_debut` datetime DEFAULT NULL,
   `date_fin` datetime DEFAULT NULL,
   `disponibilite` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) 
+
+
 
 
 
@@ -25,7 +29,9 @@ CREATE TABLE `member` (
   `prenom` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `telephone` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) 
+
+
 
 
 
@@ -39,30 +45,52 @@ INSERT INTO `member` (`id`, `nom`, `prenom`, `email`, `telephone`) VALUES
 
 
 
+
 CREATE TABLE `reservation` (
   `id_reservation` int(11) NOT NULL,
   `id_member` int(11) DEFAULT NULL,
   `date_reservation` datetime DEFAULT NULL,
   `statut` enum('confirme','annulee') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+  FOREIGN KEY (id_membre) REFERENCES membres(id), 
+  FOREIGN KEY (id_activite) REFERENCES activites(id),
+) 
 
 
-ALTER TABLE `activites`
-  ADD PRIMARY KEY (`id_activite`);
-
-ALTER TABLE `member`
-  ADD PRIMARY KEY (`id`);
 
 
-ALTER TABLE `nn`
-  ADD PRIMARY KEY (`id_activite`);
 
-ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id_reservation`);
+INSERT INTO membres (nom, prenom, email, telephone, )
+VALUES ('John ', 'Doe','john.doe@example.com', '1234567890');
+
+INSERT INTO activites (nom, description)
+VALUES ('Yoga', 'Cours de yoga pour tous les niveaux');
+
+INSERT INTO reservation (id_membre, id_reservation,  date_reservation, statut)
+VALUES (1, 1,'2024-12-01 10:00:00', 'confirmée');
 
 
-ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-COMMIT;
+
+
+UPDATE membre
+SET nom= 'Jhon'
+WHERE id = 1;
+
+
+
+DELETE FROM membre
+WHERE id = 1;
+
+
+
+SELECT membre.nom AS nom, activites.nom AS nom_activite, reservation.date_reservation, reservation.statut
+FROM reservation
+JOIN member ON reservation.id_membre = member.id
+JOIN activites ON reservation.id_activite = activites.id;
+
+
+
+
+
 
 
