@@ -30,10 +30,11 @@
         echo "<td>".$rows['prenom']. "</td>";
         echo "<td>".$rows['email']. "</td>";
         echo "<td>".$rows['phone']. "</td>";
-        
-        echo "<td><a href='index.html?id=".$id."> modification </a></td>";
 
+
+        echo "<td><a href='index.php?id=".$id."'> modifier </a></td>";
         echo "<td><a href='delete.php?id=".$id."'> supprimer </a></td>";
+
         echo "</tr>";
       
       }
