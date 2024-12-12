@@ -20,9 +20,9 @@
    $email = $_POST['email'];
    $phone =$_POST['phone'];
       
-   $requete = "INSERT INTO member( nom, prenom, email, telephone) VALUES ('$nom' , '$prenom' ,'$email', '$phone')";
+   $requete1 = "INSERT INTO member( nom, prenom, email, telephone) VALUES ('$nom' , '$prenom' ,'$email', '$phone')";
    
-   $query = mysqli_query($conn,$requete);
+   $query = mysqli_query($conn,$requete1);
    echo"insere la requete";
    header("location:index.php");
 
