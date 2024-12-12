@@ -55,28 +55,65 @@
       
       // }
 
-      $requet = "SELECT nom,prenom,nom_activite,date_reservation,statut
-                FROM member M JOIN reservation R ON M.id_member = R.id_member
-                    JOIN activites A ON A.id_activite = R.id_activite";
+      // $requet = "SELECT nom,prenom,nom_activite,date_reservation,statut
+      //           FROM member M JOIN reservation R ON M.id_member = R.id_member
+      //               JOIN activites A ON A.id_activite = R.id_activite";
       
-      $quey = mysqli_query($conn, $requet);
+      // $quey = mysqli_query($conn, $requet);
 
-      while($rows= mysqli_fetch_assoc($quey)){
-        echo "<tr>";
-            echo "<td>".$rows['nom']. "</td>";
-            echo "<td>".$rows['prenom']. "</td>";
-            echo "<td>".$rows['nom_activite']. "</td>";
-            echo "<td>".$rows['date_reservation']. "</td>";
-            echo "<td>".$rows['statut']. "</td>";
-            echo "<td>
-                    <a href='index.php?id=".$id_member."'> modifier </a>
-                    <a href='delete.php?id=".$id_member."'> supprimer </a>
-                  </td>";
+      // while($rows= mysqli_fetch_assoc($quey)){
+      //   echo "<tr>";
+      //       echo "<td>".$rows['nom']. "</td>";
+      //       echo "<td>".$rows['prenom']. "</td>";
+      //       echo "<td>".$rows['nom_activite']. "</td>";
+      //       echo "<td>".$rows['date_reservation']. "</td>";
+      //       echo "<td>".$rows['statut']. "</td>";
+      //       echo "<td>
+      //               <a href='index.php?id=".$id_member."'> modifier </a>
+      //               <a href='delete.php?id=".$id_member."'> supprimer </a>
+      //             </td>";
 
-        echo "</tr>";
-      }
+      //   echo "</tr>";
+      // }
+
+
+
+      
 
 ?>
+
+
+<?php
+include 'connection.php';
+
+$requet = "SELECT M.nom, M.prenom, A.nom_activite, R.date_reservation, R.statut
+           FROM member M
+           JOIN reservation R ON M.id_member = R.id_member
+           JOIN activites A ON A.id_activite = R.id_activite";
+
+$quey = mysqli_query($conn, $requet);
+
+if ($quey) {
+    while ($rows = mysqli_fetch_assoc($quey)) {
+        echo "<tr>";
+        echo "<td>" . $rows['nom'] . "</td>";
+        echo "<td>" . $rows['prenom'] . "</td>";
+        echo "<td>" . $rows['nom_activite'] . "</td>";
+        echo "<td>" . $rows['date_reservation'] . "</td>";
+        echo "<td>" . $rows['statut'] . "</td>";
+        echo "<td>
+                <a href='index.php?id=" . $rows['id_member'] . "'> modifier </a>
+                <a href='delete.php?id=" . $rows['id_member'] . "'> supprimer </a>
+              </td>";
+        echo "</tr>";
+    }
+} else {
+    echo "Erreur : " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
+
 
 </table>
 </body>
