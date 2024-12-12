@@ -13,14 +13,6 @@
    include 'connection.php';
 
 
-
-//    $activite = $_POST['activite'];
-//    $description $_POST['description'];
-//    $capacite = $_POST['capacite'];
-//    $date_debut = $_POST['date_debut'];
-//    $date_fin = $_POST['date_fin'];
-
-
     if(isset($_POST['submit'])){
         
    $nom=$_POST['nom'];
