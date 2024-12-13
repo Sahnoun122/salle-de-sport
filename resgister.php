@@ -92,7 +92,8 @@ if (isset($_POST['submit'])) {
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $date_reservation = $_POST['date_reservation'];
+    $activite = $_POST['activite'];
+    // $date_reservation = $_POST['date_reservation'];
 
     $requete1 = "INSERT INTO member (nom, prenom, email, telephone) VALUES ('$nom', '$prenom', '$email', '$phone')";
     $query1 = mysqli_query($conn, $requete1);
@@ -100,7 +101,12 @@ if (isset($_POST['submit'])) {
     if ($query1) {
         $id_membre = mysqli_insert_id($conn);
 
-        $requete2 = "INSERT INTO reservation (id_member, date_reservation) VALUES ('$id_membre', '$date_reservation')";
+        $requete_act = "SELECT id_activite FROM activites WHERE nom_activite='$activite'";
+        $query_act = mysqli_query($conn, $requete_act);
+        $rows = mysqli_fetch_assoc($query_act);
+        $id_activite = $rows['id_activite'];
+
+        $requete2 = "INSERT INTO reservation (id_member,id_activite,date_reservation) VALUES ('$id_membre','$id_activite',CURRENT_TIMESTAMP)";
         $query2 = mysqli_query($conn, $requete2);
 
         if ($query2) {
@@ -116,6 +122,10 @@ if (isset($_POST['submit'])) {
 } else {
     echo "<h1>Non inséré la requête</h1>";
 }
+
+
+
+
 ?>
 
 </body>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>read</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 </head>
 <body>
     
@@ -26,10 +27,11 @@
 
 include 'connection.php';
 
-$requet = "SELECT M.nom, M.prenom, A.nom_activite, R.date_reservation, R.statut
+$requet = "SELECT M.id_member, M.nom, M.prenom, A.nom_activite, R.date_reservation, R.statut
            FROM member M
            JOIN reservation R ON M.id_member = R.id_member
-           JOIN activites A ON A.id_activite = R.id_activite";
+           JOIN activites A ON A.id_activite = R.id_activite
+           ORDER BY M.id_member";
 
 $quey = mysqli_query($conn, $requet);
 
