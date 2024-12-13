@@ -9,9 +9,6 @@
     
 
 <?php
-
-
-   
 $host = 'localhost';
 $user='root';
 $pass='';
@@ -22,7 +19,7 @@ if($conn -> connect_error){
      die('sorry not connecte' .$conn-> connect_error);
  }
 
-
 ?>
+
 </body>
 </html>
