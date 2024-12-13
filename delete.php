@@ -13,8 +13,9 @@
 
     
     include 'connection.php';
-    $id =$_GET ['id'];
-     $sql = "DELETE FROM member where id= '$id_member' ";
+
+    $id_member =$_GET ['id'];
+     $sql = "DELETE FROM reservation where id_member= '$id_member' ";
      $query =mysqli_query($conn, $sql);
      if(isset($query)){
         echo "<h1> suppression avec success </h1>";

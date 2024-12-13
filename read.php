@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>read</title>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 </head>
 <body>
     
@@ -21,7 +20,10 @@
 
 
   </tr>
- 
+
+
+
+  
 
 <?php
 
@@ -37,15 +39,16 @@ $quey = mysqli_query($conn, $requet);
 
 if ($quey) {
     while ($rows = mysqli_fetch_assoc($quey)) {
+      $id_member =$rows['id_member'];
         echo "<tr>";
-        echo "<td>" . $rows['nom'] . "</td>";
+        echo "<td >" . $rows['nom'] . "</td>";
         echo "<td>" . $rows['prenom'] . "</td>";
         echo "<td>" . $rows['nom_activite'] . "</td>";
         echo "<td>" . $rows['date_reservation'] . "</td>";
         echo "<td>" . $rows['statut'] . "</td>";
         echo "<td>
-                <a href='index.php?id=" . $rows['id_member'] . "'> modifier </a>
-                <a href='delete.php?id=" . $rows['id_member'] . "'> supprimer </a>
+                <a href='index.php?id=" . $id_member. "'> modifier </a>
+                <a href='delete.php?id=" . $id_member. "'> supprimer </a>
               </td>";
         echo "</tr>";
     }

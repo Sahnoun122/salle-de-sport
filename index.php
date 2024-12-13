@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/css.css">
 
     <title>Document</title>
 </head>
@@ -18,6 +19,7 @@
 
 include 'connection.php';
   if(isset($_GET['id'])){
+
     $id=$_GET['id'];
     $sq= "SELECT * from member where id='$id_member'";
     $q= mysqli_query ($conn, $sq) ;
