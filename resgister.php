@@ -15,6 +15,9 @@
 
 
 include 'connection.php';
+if(isset($_GET['id'])){
+
+}else{
 
 if (isset($_POST['submit'])) {
     $nom = $_POST['nom'];
@@ -52,6 +55,7 @@ if (isset($_POST['submit'])) {
     echo "<h1>Non inséré la requête</h1>";
 }
 
+}
 
 
 
