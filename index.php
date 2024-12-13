@@ -20,15 +20,17 @@
 include 'connection.php';
   if(isset($_GET['id'])){
 
-    $id=$_GET['id'];
-    $sq= "SELECT * from member where id='$id_member'";
+    $id_member=$_GET['id'];
+    $sq= "SELECT * from reservation where id_member='$id_member'";
     $q= mysqli_query ($conn, $sq) ;
     $rows =mysqli_fetch_assoc($q);
-    
+
     $nom =$rows ['nom'];
     $prenom=$rows['prenom'];
     $email=$rows['email'];
     $phone=$rows['phone'];
+    $activite=$rows['nom_activite'];
+
   }
 
 
