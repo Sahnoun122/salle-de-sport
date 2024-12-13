@@ -22,14 +22,14 @@ include 'connection.php';
 
     $id_member=$_GET['id'];
     $sq= "SELECT * from reservation where id_member='$id_member'";
-    $q= mysqli_query ($conn, $sq) ;
-    $rows =mysqli_fetch_assoc($q);
+    $q= mysqli_query($conn, $sq) ;
+    $row =mysqli_fetch_assoc($q);
 
-    $nom =$rows ['nom'];
-    $prenom=$rows['prenom'];
-    $email=$rows['email'];
-    $phone=$rows['phone'];
-    $activite=$rows['nom_activite'];
+    $nom =$row ['nom'];
+    $prenom=$row['prenom'];
+    $email=$row['email'];
+    $phone=$row['phone'];
+    $activite=$row['nom_activite'];
 
   }
 
@@ -122,6 +122,9 @@ include 'connection.php';
        while( $fetch =mysqli_fetch_assoc($s)){
             echo '<option value="'.$fetch['nom_activite'].'">'.$fetch['nom_activite'].'</option>';
        }
+
+       if(isset($_GET['id'])){
+        echo $activite; }
       ?>
       <!-- <option value="US">Yoga</option> -->
       
