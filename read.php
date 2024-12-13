@@ -23,6 +23,7 @@
  
 
 <?php
+
 include 'connection.php';
 
 $requet = "SELECT M.nom, M.prenom, A.nom_activite, R.date_reservation, R.statut

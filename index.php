@@ -14,7 +14,9 @@
 
 //update
 
-  require 'connection.php';
+
+
+include 'connection.php';
   if(isset($_GET['id'])){
     $id=$_GET['id'];
     $sq= "SELECT * from member where id='$id_member'";
@@ -33,6 +35,9 @@
     $s= mysqli_query ($conn, $sql) ;
    
     
+
+    $sqlr= "SELECT * from reservation ";
+    $sr= mysqli_query ($conn, $sqlr) ;
     // $nom =$rows ['nom'];
     // $prenom=$rows['prenom'];
     // $email=$rows['email'];
@@ -117,6 +122,12 @@
       <!-- <option value="US">Yoga</option> -->
       
     </select>
+
+    <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+    <select id="countries" name="statut" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    
+      
+    </select> -->
 
     
 

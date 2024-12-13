@@ -12,15 +12,15 @@
 
 
    
-   $host = 'localhost';
-   $user='root';
-   $pass='';
-   $db='sport';
-   $conn= new mysqli($host, $user, $pass, $db);
-   
-   if($conn -> connect_error){
-        die('sorry not connecte' .$conn-> connect_error);
-    }
+$host = 'localhost';
+$user='root';
+$pass='';
+$db='sport';
+$conn= new mysqli($host, $user, $pass, $db);
+
+if($conn -> connect_error){
+     die('sorry not connecte' .$conn-> connect_error);
+ }
 
 
 ?>
